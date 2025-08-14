@@ -9,7 +9,7 @@ Proyecto Frontend para challenge técnico. Aplicación SPA desarrollada en Next.
 - [Stack Tecnológico](#stack-tecnológico)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Características y Usabilidad](#características-y-usabilidad)
-- [Capturas de pantalla](# Capturas-de-pantalla)
+- [Captura de pantalla](#capturas-de-pantalla)
 - [Escalabilidad](#escalabilidad)
 - [Performance](#performance)
 - [SEO](#seo)
