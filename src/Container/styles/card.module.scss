@@ -1,0 +1,83 @@
+@use "../../styles/variant.module.scss" as *;
+@use "sass:map";
+
+.container_card {
+  display: flex;
+  border-bottom: 4px solid $bg-gray;
+  padding: $spacing-xl;  //cursor: pointer;
+  height: 320px;
+
+  .card_image {
+    width: 180px;
+    height: 250px;
+    border-radius: $border-radius;
+    margin-right: $spacing-xl;
+    object-fit: contain;
+  }
+
+  .card_info {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    padding: $spacing-xl 0 $spacing-xl 0;
+    width: 70%;
+
+    .info_details {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      flex-direction: column;
+
+      .info_title {
+        font-weight: $font-weight-light;
+        font-size: $font-size-xl;
+        line-height: 25px;
+        max-width: 70%;
+        text-transform: capitalize;
+        color: $text-secondary-gray;
+      }
+
+      .details_description {
+        font-size: $font-size-xs;
+        text-transform: capitalize;
+        color: $text-terciary-gray;
+        padding: 4px;
+        font-weight: $font-weight-bold;
+        background-color: #d3ffdc;
+        width: 132px;
+      }
+    }
+  }
+}
+
+@media (max-width: map.get($breakpoints, small)) {
+  .container_card {
+    .card_image {
+      width: 120px;
+      height: 120px;
+    }
+
+    .card_info {
+      width: 100%;
+      padding: 0;
+      gap: $spacing-sm;
+
+      .info_details {
+        .info_title {
+          font-size: $font-size-md;
+          max-width: 100%;
+          text-transform: capitalize;
+        }
+
+        .details_description {
+          display: flex;
+          gap: $spacing-sm;
+          align-items: center;
+          font-size: $font-size-lg;
+          margin-bottom: $spacing-sm;
+        }
+      }
+
+    }
+  }
+}
