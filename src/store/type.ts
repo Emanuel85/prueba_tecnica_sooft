@@ -1,5 +1,5 @@
 interface ICard {
-    id: Date;
+    id: number;
     title: string;
     description: string;
 }
@@ -20,4 +20,8 @@ export interface IInitialState {
     setIsLoading?: (isLoading: boolean) => void;
     fields: IFields;
     setFields?: (key: string, value: string) => void;
+    filteredCards: ICard[];
+    setFilteredCards?: (filteredCards: ICard[]) => void;
+    editingId: number | null;
+    setEditingId?: (value: number | null) => void
 }

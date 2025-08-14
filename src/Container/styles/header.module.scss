@@ -2,7 +2,7 @@
 @use "sass:map";
 
 .container_header {
-  background-color: $bg-yellow;
+  background-color: $bg-terciary-gray;
   padding: $spacing-sm 0;
   width: 100%;
   display: flex;
@@ -10,11 +10,11 @@
 
   .header {
     max-width: map.get($breakpoints, xlarge);
-    margin: 0 auto;
+    margin: 8px auto;
     padding: 0 $spacing-xl;
     display: flex;
-    align-items: center;
-    gap: 24px;
+    flex-direction: column;
+    gap: 8px;
     width: 100%;
 
     .header_logo {

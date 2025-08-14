@@ -1,12 +1,15 @@
-import React from 'react'
-import styles from '../styles/card.module.scss'
-import Image from 'next/image'
+import React from 'react';
+import styles from '../styles/card.module.scss';
+import Image from 'next/image';
+import { useStore } from '@/store/useStore';
+import { Props } from './type';
 
-const Card = ({ items }: any) => {
+const Card = ({ handleDelete, handleEdit }: Props) => {
+  const { editingId, filteredCards } = useStore()
   return (
     <>
-      {items.length > 0 && items.map((item: any) => (
-        <div key={item.id} className={styles.container_card} data-testid={`container_card${item.id}`}>
+      {filteredCards?.length > 0 && filteredCards?.map((item: any) => (
+        <div key={item.id} className={`${styles.container_card} ${editingId === item.id ? styles.editing_card : ""}`} data-testid={`container_card${item.id}`}>
           <Image
             width={180}
             height={180}
@@ -27,11 +30,29 @@ const Card = ({ items }: any) => {
                 {item.description}
               </span>
             </div>
+            <div className={styles.card_actions}>
+              <button
+                type="button"
+                className={styles.card_button_edit}
+                onClick={() => handleEdit?.(item.id)}
+                data-testid={`edit_button${item.id}`}
+              >
+                Editar
+              </button>
+              <button
+                type="button"
+                className={styles.card_button_delete}
+                onClick={() => handleDelete?.(item.id)}
+                data-testid={`delete_button${item.id}`}
+              >
+                Eliminar
+              </button>
+            </div>
           </div>
         </div>
       ))}
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

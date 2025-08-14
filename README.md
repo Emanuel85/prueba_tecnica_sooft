@@ -1,40 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
 
-## Getting Started
+# Prueba Técnica Sooft
 
-First, run the development server:
+Proyecto Frontend para challenge técnico. Aplicación SPA desarrollada en Next.js (React 19) con TypeScript, gestión de estado con Zustand, estilos con Sass (SCSS modules) y pruebas automáticas con Jest y Testing Library.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Tabla de contenidos
+
+- [Instrucciones](#instrucciones)
+- [Stack Tecnológico](#stack-tecnológico)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Características y Usabilidad](#características-y-usabilidad)
+- [Capturas de pantalla](# Capturas-de-pantalla)
+- [Escalabilidad](#escalabilidad)
+- [Performance](#performance)
+- [SEO](#seo)
+- [Testing](#testing)
+
+## Instrucciones
+
+1. Clona el repositorio y entra a la carpeta del proyecto.
+2. Ejecuta `npm install` para instalar todas las dependencias.
+3. Inicia la aplicación con:
+	```bash
+	npm run dev
+	```
+	Esto levanta el frontend en [http://localhost:3000](http://localhost:3000).
+
+### Otros scripts útiles
+
+- `npm run build`: build de producción.
+- `npm run start`: inicia el build de producción.
+- `npm run lint`: corre linter.
+- `npm run test`: tests unitarios.
+
+## Stack Tecnológico
+
+**Frontend:**
+- Next.js 15 (React 19)
+- TypeScript
+- Sass (SCSS modules)
+- Zustand (state management)
+
+**Testing:**
+- Jest, Testing Library (unitarios)
+
+## Estructura del Proyecto
+
+```
+├── src/
+│   ├── Container/         # Componentes principales y lógica de UI
+│   ├── pages/             # Páginas Next.js y API route de ejemplo
+│   ├── store/             # Zustand store y tipos
+│   └── styles/            # Estilos globales y variables SCSS
+├── public/                # Imágenes y assets estáticos
+├── __test__/              # Pruebas unitarias
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Características y Usabilidad
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- **Gestión de tarjetas**: crear, editar, eliminar y buscar tarjetas.
+- **Búsqueda en tiempo real** con autogestión de estado.
+- **Mensajes personalizados** para errores, sin resultados y bienvenida.
+- **Mobile first**: diseño adaptable y responsivo.
+- **Edición inline** de tarjetas.
+- **Inputs con focus visual** y feedback inmediato.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Capturas de pantalla
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Pantalla principal (Home)
+![Pantalla Home](./documentacion/screnshot_home.png)
+*Vista principal de la aplicación, donde se listan las tarjetas y se accede a las funciones principales.*
 
-## Learn More
+### Crear una tarjeta
+![Crear tarjeta](./documentacion/screenshot_CreateCard.jpg)
+*Formulario para crear una nueva tarjeta, con inputs para título y descripción.*
 
-To learn more about Next.js, take a look at the following resources:
+### Editar una tarjeta
+![Editar tarjeta](./documentacion/screenshot_EditCard.png)
+*Vista de edición inline de una tarjeta existente, permitiendo modificar sus datos fácilmente.*
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## Escalabilidad
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Arquitectura modular: separación clara entre componentes, store y estilos.
+- Fácil de extender: agregar nuevas vistas, servicios o features es sencillo.
 
-## Deploy on Vercel
+## Performance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Data fetching eficiente (sin SSR ni caché, SPA puro).
+- Manejo de estado y renderizado optimizado con Zustand.
+- Estilos modulares para evitar recarga innecesaria.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## SEO
+
+- Uso de Next.js para estructura optimizada.
+
+## Testing
+
+- Pruebas unitarias con Jest y Testing Library (`npm run test`).
+- Mocks de store y componentes para tests confiables.
+
+---
+
+Desarrollado por Emanuel85 para challenge técnico.

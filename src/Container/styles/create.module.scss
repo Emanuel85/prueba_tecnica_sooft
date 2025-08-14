@@ -12,7 +12,7 @@
     border-color: $bg-blue;
   }
 
-  .form_inputs {
+  .form_inputs_title {
     flex: 1;
     height: 36px;
     padding: 0 $spacing-sm;
@@ -26,6 +26,33 @@
     &::placeholder {
       color: $text-gray;
       font-size: $font-size-lg;
+    }
+
+    &.editing_card_background {
+      background-color: $bg-secondary-blue;
+    }
+
+  }
+
+  .form_inputs_description {
+    flex: 1;
+    height: 36px;
+    width: 10px;
+    padding: 0 $spacing-sm;
+    border: $border-radius;
+    font-size: $font-size-md;
+    background-color: $bg-white;
+    border-left: 1px solid $bg-gray;
+    outline: none;
+    color: rgb(77, 71, 71);
+
+    &::placeholder {
+      color: $text-gray;
+      font-size: $font-size-lg;
+    }
+
+    &.editing_card_background {
+      background-color: $bg-secondary-blue; 
     }
   }
 
@@ -51,4 +78,9 @@
       height: 20px;
     }
   }
+}
+
+.editing_card_borde {
+  border: 1px solid $bg-blue; // borde naranja para destacar
+
 }

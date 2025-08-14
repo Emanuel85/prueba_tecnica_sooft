@@ -1,0 +1,8 @@
+@use '../../styles/variant.module.scss' as *;
+
+.container_list_card {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    margin: 20px;
+}

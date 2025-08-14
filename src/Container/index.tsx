@@ -1,13 +1,13 @@
 import React from 'react'
 import Card from './components/Card'
-import { useStore } from '../store/useStore'
 import useWithListCard from './components/useWithListCard';
+import styles from './styles/listCard.module.scss';
+import { Props } from './components/type';
 
-const ListCard = () => {
-  const { cards } = useStore();
+const ListCard = ({ handleDelete, handleEdit }: Props) => {
   return (
-    <div>    
-      <Card items={cards} />
+    <div className={styles.container_list_card}>
+      <Card handleDelete={handleDelete} handleEdit={handleEdit} />
     </div>
   )
 }
