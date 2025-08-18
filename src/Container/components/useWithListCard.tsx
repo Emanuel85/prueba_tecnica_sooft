@@ -17,8 +17,13 @@ const useWithListCard = <P extends object>(Components: React.ComponentType<P>): 
         setCards?.(updatedCards);
         setEditingId?.(null);
       } else {
-        // Agregamos una nueva card
-        const newCard = { id: Math.random(), title: fields.title, description: fields.description };
+        // Agregamos una nueva card con createdAt
+        const newCard = {
+          id: Math.random(),
+          title: fields.title,
+          description: fields.description,
+          createdAt: Date.now(),
+        };
         setCards?.([...cards, newCard]);
       }
       setFields?.("title", "");
@@ -45,19 +50,26 @@ const useWithListCard = <P extends object>(Components: React.ComponentType<P>): 
       setEditingId?.(id);
     };
 
-    // Filtrado en tiempo real
-    React.useEffect(() => {
+    // Función de filtrado y orden
+    function filterAndSortCards(cards: any[], searchText: string) {
       if (!searchText || searchText.trim() === "") {
-        setFilteredCards?.(cards);
-      } else {
-        const lower = searchText.toLowerCase();
-        setFilteredCards?.(
-          cards.filter(card =>
-            card.title?.toLowerCase().includes(lower) ||
-            card.description?.toLowerCase().includes(lower)
-          )
-        );
+        // Ordenar por createdAt descendente si existe
+        return [...cards].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
       }
+      try {
+        const regex = new RegExp(searchText, "i");
+        return cards
+          .filter(card => regex.test(card.title) || regex.test(card.description))
+          .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+      } catch {
+        // Si el regex es inválido, retornar lista vacía
+        return [];
+      }
+    }
+
+    // Filtrado en tiempo real usando la función
+    React.useEffect(() => {
+      setFilteredCards?.(filterAndSortCards(cards, searchText));
     }, [searchText, cards]);
 
     function handleFocus() {

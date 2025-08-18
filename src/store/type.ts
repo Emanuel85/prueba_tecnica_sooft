@@ -1,7 +1,8 @@
-interface ICard {
+export interface ICard {
     id: number;
     title: string;
     description: string;
+    createdAt?: number;
 }
 
 interface IFields {
@@ -10,8 +11,8 @@ interface IFields {
 }
 
 export interface IInitialState {
-    cards: ICard[]
-    setCards?: (cards: any) => void
+    cards: ICard[];
+    setCards?: (cards: ICard[]) => void;
     isFocused: boolean;
     setIsFocused?: (isFocused: boolean) => void;
     searchText: string;
@@ -23,5 +24,5 @@ export interface IInitialState {
     filteredCards: ICard[];
     setFilteredCards?: (filteredCards: ICard[]) => void;
     editingId: number | null;
-    setEditingId?: (value: number | null) => void
+    setEditingId?: (value: number | null) => void;
 }
