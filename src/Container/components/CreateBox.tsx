@@ -29,7 +29,7 @@ export default function CreateBox({ handleCard, handleFocus, handleBlur, isFocus
         onBlur={handleBlur}
         data-testid="description-input"
       />
-      <button type="submit" className={styles.form_button} onClick={handleCard} data-testid="search-button">
+      <button disabled={!fields.title || !fields.description} type="submit" className={styles.form_button} onClick={handleCard} data-testid="search-button">
         <Image src={iconSearch} alt="icon search" className={styles.button_icon} />
       </button>
     </form>

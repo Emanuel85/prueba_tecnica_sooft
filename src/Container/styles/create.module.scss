@@ -52,7 +52,7 @@
     }
 
     &.editing_card_background {
-      background-color: $bg-secondary-blue; 
+      background-color: $bg-secondary-blue;
     }
   }
 
@@ -69,8 +69,15 @@
     padding: $spacing-sm $spacing-md;
     cursor: pointer;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: $bg-white;
+    }
+
+    &:disabled {
+      background-color: $bg-terciary-gray; // un gris más apagado
+      cursor: not-allowed;
+      border: 1px solid $bg-gray;
+      opacity: 0.6;
     }
 
     .button_icon {
