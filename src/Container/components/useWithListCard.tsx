@@ -1,16 +1,12 @@
 import { useStore } from '@/store/useStore';
-import React from 'react';
+import React from 'react'
 import { useDebounce } from 'use-debounce';
-
-
 const useWithListCard = <P extends object>(Components: React.ComponentType<P>): React.FC<P> => {
   return (props: P) => {
 
-
     const { setIsFocused, cards, setCards, setFields, fields, searchText, setFilteredCards, setEditingId, editingId } = useStore();
-
-    // Debounce del searchText
     const [debouncedSearchText] = useDebounce(searchText, 1000);
+
     const handleCard = (e: React.SyntheticEvent) => {
       e.preventDefault();
       if (editingId !== null) {
@@ -55,49 +51,28 @@ const useWithListCard = <P extends object>(Components: React.ComponentType<P>): 
     };
 
     // Función de filtrado y orden
-    function filterAndSortCards(cards: any[], searchText: string) {
-      if (!searchText || searchText.trim() === "") {
-        return [...cards].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-      }
-      try {
-        const regex = new RegExp(searchText, "i");
-        return cards
-          .filter(card => regex.test(card.title) || regex.test(card.description))
-          .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
-      } catch {
-        // Si el regex es inválido, retornar lista vacía
-        return [];
-      }
+    function filterAndSortCards(cards: any[], text: string) {
+      // quitamos acentos y pasamos a minúsculas
+      const toPlain = (s: string) =>
+        (s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      const q = toPlain(text).trim();
+
+      const list = !q ? [...cards]
+        : cards.filter(card => {
+          const title = toPlain(card.title);
+          const description = toPlain(card.description);
+          return title.includes(q) || description.includes(q);
+        });
+
+      // orden por createdAt desc
+      return list.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
     }
-    
-    // guarda si el último estado era "válido"
-    const wasValidRef = React.useRef(false);
 
+
+    // Filtrado en tiempo real usando la función
     React.useEffect(() => {
-      const raw = debouncedSearchText ?? "";
-      const startsWithSpace = /^\s/.test(raw);
-      const trimmed = raw.trim();
-      const isValid = !!trimmed && !startsWithSpace && trimmed.length >= 3;
-
-      if (!isValid) {
-        // Sólo resetea una vez al pasar de válido a inválido
-        if (wasValidRef.current) {
-          setFilteredCards?.(
-            [...cards].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
-          );
-        }
-        wasValidRef.current = false;
-        return;
-      }
-
-      // Aquí SÍ es válido: filtra y loguea (para comprobar debounce)
-      console.log("🔎 DebouncedSearchText válido:", trimmed);
-      setFilteredCards?.(filterAndSortCards(cards, trimmed));
-      wasValidRef.current = true;
+      setFilteredCards?.(filterAndSortCards(cards, debouncedSearchText));
     }, [debouncedSearchText, cards, setFilteredCards]);
-
-
-
 
     function handleFocus() {
       setIsFocused?.(true);
