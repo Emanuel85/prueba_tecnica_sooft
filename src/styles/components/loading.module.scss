@@ -1,0 +1,49 @@
+@use "../variant.module.scss" as *;
+
+.container_loading {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  margin: $spacing-xl auto;
+  max-width: 1200px;
+  width: 100%;
+
+  .item_image {
+    height: 200px;
+    background-color: $bg-white;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .item_content {
+    padding: $spacing-xl;
+  }
+
+  .content_title {
+    height: 20px;
+    width: 80%;
+    background-color: $bg-white;
+    margin-bottom: $spacing-md;
+    animation: shimmer 1.5s infinite;
+  }
+
+  .content_price {
+    height: 16px;
+    width: 50%;
+    background-color: $bg-white;
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-color: $bg-white;
+  }
+
+  50% {
+    background-color: $bg-gray;
+  }
+
+  100% {
+    background-color: $bg-white;
+  }
+}
