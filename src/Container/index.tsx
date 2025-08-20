@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './components/Card'
-import useWithListCard from './components/useWithListCard';
-import styles from './styles/listCard.module.scss';
+import WithListCard from './components/WithListCard';
+import styles from '../styles/components/listCard.module.scss';
 import { Props } from './components/type';
 
 const ListCard = ({ handleDelete, handleEdit }: Props) => {
@@ -12,4 +12,4 @@ const ListCard = ({ handleDelete, handleEdit }: Props) => {
   )
 }
 
-export default useWithListCard(ListCard)
+export default WithListCard(ListCard)

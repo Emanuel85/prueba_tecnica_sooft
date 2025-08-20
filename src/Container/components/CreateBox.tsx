@@ -1,14 +1,15 @@
 'use client';
 import Image from "next/image";
-import styles from "../styles/create.module.scss";
-import iconSearch from "../../../public/icon/icon_create2.png";
+import styles from "../../styles/components/create.module.scss";
+import iconCreate from "../../../public/icon/icon_create2.png";
 import { useStore } from "@/store/useStore";
+import { Props } from "./type";
 
-// Ahora recibe setFields y fields del HOC
-export default function CreateBox({ handleCard, handleFocus, handleBlur, isFocused }: any) {
-  const { setFields, fields, editingId } = useStore();
+
+export default function CreateBox({ handleCard, handleFocus, handleBlur, }: Props) {
+  const { setFields, fields, editingId, isFocused } = useStore();
   return (
-    <form className={`${styles.container_form} ${isFocused ? styles.focused : ""} ${editingId ? styles.editing_card_borde : ""}`} onSubmit={(e) => { handleCard(e); }}>
+    <form className={`${styles.container_form} ${isFocused ? styles.focused : ""} ${editingId ? styles.editing_card_borde : ""}`} onSubmit={(e) => { handleCard?.(e); }}>
       <input
         type="text"
         placeholder="Título de tarjeta..."
@@ -29,8 +30,8 @@ export default function CreateBox({ handleCard, handleFocus, handleBlur, isFocus
         onBlur={handleBlur}
         data-testid="description-input"
       />
-      <button disabled={!fields.title || !fields.description} type="submit" className={styles.form_button} onClick={handleCard} data-testid="search-button">
-        <Image src={iconSearch} alt="icon search" className={styles.button_icon} />
+      <button disabled={!fields.title || !fields.description} type="submit" className={styles.form_button} data-testid="create-button">
+        <Image src={iconCreate} alt="icon create" className={styles.button_icon} />
       </button>
     </form>
   );

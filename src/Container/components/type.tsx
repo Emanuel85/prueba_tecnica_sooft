@@ -1,5 +1,5 @@
 export interface Props {
-    handleCard?: (e: React.FormEvent<HTMLFormElement>) => void;
+    handleCard?: React.FormEventHandler<HTMLFormElement>;
     handleFocus?: () => void;
     handleBlur?: () => void;
     handleDelete?: (id: number) => void
