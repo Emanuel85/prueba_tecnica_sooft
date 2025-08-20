@@ -57,8 +57,7 @@
         background-color: $bg-blue;
         color: white;
         font-weight: 600;
-        // padding: 10px $spacing-2xl;
-         width: 100px;
+        width: 100px;
         height: 30px;
         border: none;
         border-radius: $border-radius;
@@ -71,7 +70,6 @@
         font-weight: 600;
         height: 30px;
         margin-left: $spacing-sm;
-        // padding: 10px $spacing-2xl;
         width: 100px;
         border: none;
         border-radius: $border-radius;
@@ -84,13 +82,14 @@
 }
 
 .editing_card {
-  border: 1px solid $bg-blue; // borde naranja para destacar
-  background-color: $bg-secondary-blue; // fondo suave para resaltar
+  border: 1px solid $bg-blue;
+  background-color: $bg-secondary-blue;
 }
 
 @media (max-width: map.get($breakpoints, small)) {
   .container_card {
-    height: 160px;
+    min-height: 160px;
+    height: auto;
 
     .card_image {
       width: 120px;
@@ -109,9 +108,11 @@
         }
 
         .details_description {
-          display: flex;
-          gap: $spacing-sm;
-          align-items: center;
+          display: block;
+          max-width: 100%;
+          white-space: normal;
+          overflow-wrap: anywhere;
+          word-break: break-word;
           font-size: $font-size-lg;
           margin-bottom: $spacing-sm;
         }
@@ -119,16 +120,14 @@
     }
 
     .card_actions {
-      flex-direction: column; // <--- apilar los botones
-      gap: $spacing-sm; // espacio entre ellos
-      align-items: center; // centrar los botones
+      flex-direction: column;
+      gap: $spacing-sm;
+      align-items: center;
 
       .card_button_edit,
       .card_button_delete {
-        width: 100px; // ahora sí respeta el ancho
+        width: 100px;
       }
     }
-
-
   }
 }

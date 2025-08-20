@@ -1,0 +1,135 @@
+@use "../../styles/variant.module.scss" as *;
+@use "sass:map";
+
+.overlay_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.container_modal {
+  background: #fff;
+  color: black;
+  padding: $spacing-xl $spacing-2xl $spacing-2xl;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50vw;
+}
+
+.modal_header {
+  align-items: flex-start;
+  height: 50px;
+  display: flex;
+
+  h2 {
+    color: black;
+    font-size: 28px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.modal_close {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  border-radius: $border-radius;
+  font-size: $font-size-3xl;
+  padding: $spacing-sm;
+  height: 30px;
+  cursor: pointer;
+  color: $bg-secondary-gray;
+  transition: color 0.2s, background-color 0.2s;
+
+  // corregido el selector hover
+  &:hover {
+    padding: $spacing-sm;
+    height: 30px;
+    border-radius: $border-radius;
+    background-color: $bg-secondary-gray;
+    color: $bg-white;
+  }
+}
+
+.content_footer {
+  margin-top: $spacing-3xl;
+
+  .footer_actions {
+    margin-top: $spacing-xl;
+    display: flex;
+    justify-content: end;
+
+    .primary {
+      margin-right: $spacing-2xl;
+      color: $bg-blue;
+      cursor: pointer;
+      border: none;
+      border-radius: $border-radius;
+      width: 100px;
+      height: 30px;
+      font-weight: 600;
+      transition: color 0.2s, background-color 0.2s;
+
+      &:hover {
+        color: $bg-white;
+        background-color: $bg-blue;
+      }
+    }
+
+    .secondary {
+      margin-right: $spacing-2xl;
+      color: $bg-white;
+      background-color: $bg-secondary-gray;
+      cursor: pointer;
+      border: none;
+      border-radius: $border-radius;
+      width: 100px;
+      height: 30px;
+      font-weight: 600;
+      transition: color 0.2s, background-color 0.2s;
+
+      &:hover {
+        color: $bg-white;
+        background-color: $bg-red;
+      }
+    }
+  }
+
+  p {
+    text-align: end;
+  }
+
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+
+@media (max-width: map.get($breakpoints, small)) {
+  .container_modal {
+    width: 400px;
+  }
+
+  .content_footer {
+    p {
+      text-align: end;
+      font-size: $font-size-sm;
+    }
+  }
+}

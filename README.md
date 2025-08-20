@@ -28,9 +28,21 @@ Proyecto Frontend para challenge técnico. Aplicación SPA desarrollada en Next.
 ### Otros scripts útiles
 
 - `npm run build`: build de producción.
-- `npm run start`: inicia el build de producción.
+### Build de producción
+![Build producción](./documentacion/screenshot_build.jpg)
+*Ejecución del build de producción (`npm run build`).*
+
 - `npm run lint`: corre linter.
+### Linter
+![Linter](./documentacion/screenshot_lint.jpg)
+*Chequeo de código con linter (`npm run lint`).*
+
 - `npm run test`: tests unitarios.
+### Pruebas unitarias
+![Tests](./documentacion/screenshot_test.jpg)
+*Ejecución de tests unitarios (`npm run test`).*
+
+- `npm run start`: inicia el build de producción.
 
 ## Stack Tecnológico
 
@@ -65,6 +77,7 @@ Proyecto Frontend para challenge técnico. Aplicación SPA desarrollada en Next.
 - **Edición inline** de tarjetas.
 - **Inputs con focus visual** y feedback inmediato.
 
+
 ## Capturas de pantalla
 
 ### Pantalla principal (Home)
@@ -78,6 +91,24 @@ Proyecto Frontend para challenge técnico. Aplicación SPA desarrollada en Next.
 ### Editar una tarjeta
 ![Editar tarjeta](./documentacion/screenshot_EditCard.png)
 *Vista de edición inline de una tarjeta existente, permitiendo modificar sus datos fácilmente.*
+
+### Modal de confirmación de borrado
+![Modal eliminar](./documentacion/screenshot_modalDelete.jpg)
+*Modal que solicita confirmación antes de eliminar una tarjeta.*
+
+### Modal de tarjeta duplicada
+![Modal duplicado](./documentacion/screenshot_modalDuplicado.jpg)
+*Modal que informa que no se puede crear una tarjeta con título y descripción duplicados.*
+
+
+### Mensaje de sin resultados
+![Mensaje sin resultados](./documentacion/screenShot_msjResultado.jpg)
+*Mensaje personalizado cuando la búsqueda no arroja resultados.*
+
+
+### Chequeo SEO
+![SEO](./documentacion/screenshot_seo.jpg)
+*Chequeo de buenas prácticas SEO en la aplicación.*
 
 ## Escalabilidad
 

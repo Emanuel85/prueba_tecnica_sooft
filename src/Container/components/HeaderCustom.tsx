@@ -1,4 +1,4 @@
-import styles from "../styles/header.module.scss";
+import styles from "../../styles/components/header.module.scss";
 import CreateBox from "./CreateBox";
 import SearchBox from "./SearchBox";
 import { Props } from "./type";
