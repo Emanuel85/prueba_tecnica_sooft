@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import useWithListCard from '../src/Container/components/useWithListCard';
+import useWithListCard from '../src/Container/components/WithListCard';
 import * as Store from '../src/store/useStore';
 
 jest.mock('../src/store/useStore', () => ({ useStore: jest.fn() }));

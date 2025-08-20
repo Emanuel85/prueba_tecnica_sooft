@@ -34,14 +34,22 @@ describe('Card component', () => {
     expect(screen.getByTestId('test-image')).toBeInTheDocument();
   });
 
+
   it('dispara handleEdit y handleDelete con el id correcto', () => {
+    const onDelete = jest.fn();
+    const onEdit = jest.fn();
+
+    // Mock setModal para llamar a onDelete inmediatamente
     useStoreMock.useStore.mockReturnValue({
       filteredCards: [mockItem],
       editingId: null,
+      setModal: ({ buttonFooter }: any) => {
+        // Simula la confirmación del modal llamando a onClick del botón de eliminar
+        const eliminarBtn = buttonFooter.find((b: any) => b.label === 'Sí, eliminar');
+        if (eliminarBtn) eliminarBtn.onClick();
+      },
+      setCloseModal: jest.fn(),
     } as any);
-
-    const onDelete = jest.fn();
-    const onEdit = jest.fn();
 
     render(<Card handleDelete={onDelete} handleEdit={onEdit} />);
 
