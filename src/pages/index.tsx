@@ -1,7 +1,7 @@
 
 import { Roboto } from "next/font/google";
 import ListCard from "@/Container";
-import useWithListCard from "@/Container/components/useWithListCard";
+import WithListCard from "@/Container/components/WithListCard";
 import HeaderCustom from "@/Container/components/HeaderCustom";
 import { Props } from "@/Container/components/type";
 import styles from '../styles/components/index.module.scss'
@@ -31,4 +31,4 @@ function Home({ handleCard, handleFocus, handleBlur, handleDelete, handleEdit }:
   );
 }
 
-export default useWithListCard(Home)
+export default WithListCard(Home)
